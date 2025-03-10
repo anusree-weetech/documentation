@@ -601,3 +601,247 @@ SELECT DATEDIFF('2025-12-31', '2025-03-10'); -- Outputs: 296
 Would you like any topic explained in more detail? 😊
 <hr>
 
+# **Types of Relationships in More Detail**  
+
+In relational databases, relationships define how tables are connected to each other through **keys**. Understanding different types of relationships helps in designing efficient database schemas.
+
+---
+
+## **1. Reflexive (Self-Referencing) Relationships**  
+
+A **reflexive relationship** (self-referencing relationship) is when a **table has a relationship with itself**. This means a **foreign key in the table references the primary key of the same table**.
+
+### **Why Use Reflexive Relationships?**  
+- **Hierarchical Structures** (e.g., organizational charts where an employee reports to another employee).  
+- **Graph-like Data Models** (e.g., social network friends, parent-child relationships).  
+
+### **Example: Employee-Manager Relationship**  
+A company has employees, and each employee may have a **manager**. The **manager is also an employee**, so we reference the **same table**.
+
+📌 **Table: Employees**  
+| EmployeeID | Name   | ManagerID |
+|------------|--------|-----------|
+| 1          | Alice  | NULL      |
+| 2          | Bob    | 1         |
+| 3          | Charlie | 1        |
+| 4          | Dave   | 2         |
+
+Here, **Alice is the top manager (NULL ManagerID)**. **Bob and Charlie report to Alice (ManagerID = 1)**, and **Dave reports to Bob (ManagerID = 2)**.
+
+### **SQL Schema for Reflexive Relationship**
+```sql
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    ManagerID INT,
+    FOREIGN KEY (ManagerID) REFERENCES Employees(EmployeeID) -- Self-reference
+);
+```
+
+### **Query Example: Get Employees and Their Managers**
+```sql
+SELECT e1.Name AS Employee, e2.Name AS Manager
+FROM Employees e1
+LEFT JOIN Employees e2 ON e1.ManagerID = e2.EmployeeID;
+```
+🔹 **LEFT JOIN is used** to include employees who don’t have managers (NULL values).
+
+---
+
+## **2. Weak and Strong Entity Relationships**  
+
+### **What is an Entity?**  
+An **entity** represents a real-world object in a database (e.g., Employee, Department, Student).  
+- **Strong Entity**: Can exist independently with a unique identifier.  
+- **Weak Entity**: **Cannot exist without a related strong entity** and relies on a **foreign key** for identification.
+
+---
+
+### **Strong Entity**  
+- **Has a Primary Key (PK) that uniquely identifies each record**.  
+- **Does not depend on any other entity**.  
+- Example: **Student, Employee, Product**.
+
+📌 **Example: Student Table**  
+```sql
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+```
+
+---
+
+### **Weak Entity**  
+- **Does NOT have a unique primary key on its own**.  
+- **Relies on a strong entity** for identification.  
+- **Has a composite key** (combination of a foreign key and another attribute).  
+- **Always has a "Total Participation" constraint** (every weak entity **must be associated** with a strong entity).  
+
+📌 **Example: Dependent Table (Employee’s Family Members)**  
+A dependent (e.g., spouse or child) **belongs to an employee** but **cannot exist without an employee**.
+
+| DependentID | EmployeeID (FK) | Name  |
+|------------|-----------------|-------|
+| 1          | 1001            | Alice |
+| 2          | 1001            | Bob   |
+| 3          | 1002            | Charlie |
+
+### **SQL Schema for Weak Entity**
+```sql
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+
+CREATE TABLE Dependents (
+    DependentID INT,
+    EmployeeID INT,
+    Name VARCHAR(50),
+    PRIMARY KEY (DependentID, EmployeeID), -- Composite Key
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID) -- Weak Entity
+);
+```
+
+🔹 **The composite primary key (DependentID, EmployeeID)** ensures that **dependents are uniquely identified per employee**.
+
+---
+
+## **Key Differences Between Strong and Weak Entities**
+
+| Feature        | Strong Entity | Weak Entity |
+|---------------|--------------|-------------|
+| **Primary Key** | Has its own unique PK | Does NOT have a unique PK |
+| **Dependency** | Exists independently | Cannot exist without a related strong entity |
+| **Foreign Key** | May have FK references | Must have an FK linking to the strong entity |
+| **Example** | Student, Product, Employee | Dependent, Order Items, Bank Accounts |
+
+---
+
+## **Conclusion**
+- **Reflexive (Self-referencing) relationships** are useful for hierarchical structures like **employee-manager relationships**.
+- **Strong entities** exist independently, while **weak entities** depend on strong entities and are identified using a **foreign key**.
+- **A weak entity must have a composite key** that includes the foreign key of the related strong entity.
+
+Would you like more examples or clarification on any concept? 😊
+
+<hr>
+
+# **Column-Oriented vs. Row-Oriented Storage (Basic Intro)**  
+
+Databases store data in different ways, and two major storage approaches are **row-oriented** and **column-oriented** storage. Understanding these can help you choose the right database for your needs.
+
+---
+
+## **1. Row-Oriented Storage** (Traditional RDBMS like MySQL, PostgreSQL, SQL Server)  
+
+### **How It Works**
+- Data is stored **row by row** in memory or on disk.
+- When you query a row, the database retrieves the **entire row at once**.
+- Best for **transactional workloads (OLTP - Online Transaction Processing)**.
+
+📌 **Example Table (Employees)**  
+
+| EmployeeID | Name  | Department | Salary  |
+|------------|-------|------------|---------|
+| 101        | Alice | HR         | 50000   |
+| 102        | Bob   | IT         | 60000   |
+| 103        | Carol | Finance    | 55000   |
+
+📌 **Row-Based Storage Representation**  
+🔹 The entire **row** is stored together on disk:  
+```
+101, Alice, HR, 50000  
+102, Bob, IT, 60000  
+103, Carol, Finance, 55000  
+```
+
+### **Advantages**
+✔️ **Fast for OLTP (Online Transaction Processing)** → Quick **INSERT, UPDATE, DELETE** operations.  
+✔️ **Efficient for retrieving entire rows** (e.g., fetching all details of an employee).  
+
+### **Disadvantages**
+❌ **Slow for analytical queries** (e.g., calculating average salary across thousands of employees).  
+❌ **Wastes memory when only specific columns are needed**.
+
+---
+
+## **2. Column-Oriented Storage** (Used in Data Warehouses like Amazon Redshift, Google BigQuery, Apache Cassandra)  
+
+### **How It Works**
+- Data is stored **column by column** instead of row by row.
+- When you query a specific column, the database retrieves **only that column**.
+- Best for **analytical workloads (OLAP - Online Analytical Processing)**.
+
+📌 **Same Example Table Stored in Column-Oriented Format**  
+
+| EmployeeID | Name  | Department | Salary  |
+|------------|-------|------------|---------|
+| 101        | Alice | HR         | 50000   |
+| 102        | Bob   | IT         | 60000   |
+| 103        | Carol | Finance    | 55000   |
+
+📌 **Column-Based Storage Representation**  
+🔹 Data is stored **column-wise** instead of row-wise:  
+```
+EmployeeID: 101, 102, 103  
+Name: Alice, Bob, Carol  
+Department: HR, IT, Finance  
+Salary: 50000, 60000, 55000  
+```
+
+### **Advantages**
+✔️ **Fast for analytical queries** (e.g., SUM, AVG, COUNT).  
+✔️ **Efficient compression** → Storing similar data together makes it **more space-efficient**.  
+✔️ **Great for OLAP (Online Analytical Processing)** and **reporting**.  
+
+### **Disadvantages**
+❌ **Slow for transactional operations** (e.g., INSERT, UPDATE, DELETE are expensive).  
+❌ **Not ideal for fetching entire rows** (since data from multiple columns is stored separately).  
+
+---
+
+## **3. When to Use Row-Oriented vs. Column-Oriented Storage?**  
+
+| Feature        | Row-Oriented Storage | Column-Oriented Storage |
+|---------------|----------------------|-------------------------|
+| **Best For** | OLTP (Transactional Workloads) | OLAP (Analytical Workloads) |
+| **Query Type** | Many small queries (single rows) | Large aggregations (SUM, AVG) |
+| **Example Use Case** | Banking, E-commerce, CRM | Data Warehouses, Reporting, BI |
+| **Storage Method** | Stores entire **rows** together | Stores **columns** separately |
+| **Speed** | Faster for INSERT, UPDATE, DELETE | Faster for SELECT queries (aggregations) |
+| **Compression** | Low compression (different data types) | High compression (similar data in columns) |
+
+---
+
+## **4. Example Queries: Performance Differences**  
+
+### **Row-Oriented Query Example (Fast for OLTP)**
+```sql
+SELECT * FROM Employees WHERE EmployeeID = 102;
+```
+🔹 This retrieves **one row quickly** since all fields are stored together.  
+
+### **Column-Oriented Query Example (Fast for OLAP)**
+```sql
+SELECT AVG(Salary) FROM Employees;
+```
+🔹 Since **only the "Salary" column** is needed, a **columnar database** reads just that column, making it **much faster** than row-based databases.
+
+---
+
+## **5. Real-World Database Examples**  
+
+| Database Type | Example Databases |
+|--------------|-------------------|
+| **Row-Oriented** (OLTP) | MySQL, PostgreSQL, SQL Server |
+| **Column-Oriented** (OLAP) | Amazon Redshift, Google BigQuery, Apache Cassandra, ClickHouse |
+
+---
+
+## **Conclusion**
+- **Row-Oriented Storage**: Best for **transaction-heavy applications** (e.g., e-commerce, banking).  
+- **Column-Oriented Storage**: Best for **analytical workloads** (e.g., big data, reporting).  
+- **Choosing the Right Storage Model** depends on whether your workload is **OLTP (transactions) or OLAP (analytics).**
+
+Would you like a deeper dive into any of these concepts? 😊
