@@ -33,6 +33,3 @@
 | **Cherry-Picking & Tags** | Cherry-Picking a Commit | `git cherry-pick <commit-hash>` | Applies a specific commit to the current branch. | `git cherry-pick --continue` | Continues cherry-picking after resolving conflicts. | `[main <commit-hash>] Applied cherry-picked commit` |
 | | | | | `git cherry-pick --abort` | Cancels cherry-picking. | |
 | | Creating Tags | `git tag <tag-name>` <br> `git tag -a <tag-name> -m "<message>"` <br> `git push origin <tag-name>` | Tags a commit and pushes it to remote. | `git tag -d <tag-name>` | Deletes a local tag. | `<tag-name> pushed to remote` |
-| | | | | `git push --delete origin <tag-name>` | Deletes a remote tag. | |
-| **Ignoring Files** | Understanding .gitignore | Editing `.gitignore` | Excludes files from Git tracking. | | | `*.log` will now be ignored. |
-
