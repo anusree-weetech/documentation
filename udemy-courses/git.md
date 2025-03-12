@@ -8,6 +8,7 @@
 | | Viewing Current Status | `git status` | Shows modified and untracked files. | `On branch main Changes not staged for commit: modified: index.html` |
 | | Viewing HEAD Commit | `git show HEAD` | Displays the latest commit details. | `commit a1b2c3d Author: John Doe Date: Wed Mar 12 2025` |
 | **Branching & Switching** | Creating and Switching Branches | `git branch feature-branch` <br> `git switch feature-branch` | Creates and switches to a new branch. | `Switched to branch 'feature-branch'` |
+| | Checking Out a branch | `git checkout brachname` |Switches to an existing branch. | `Switched to branch 'branchname'` |
 | | Checking Out a Specific Commit (Detached HEAD) | `git checkout a1b2c3d` | Switches to a specific commit in detached mode. | `Note: switching to 'a1b2c3d'.` |
 | **Merging & Rebasing** | Merging Branches | `git merge feature-branch` | Merges `feature-branch` into the current branch. | `Merge made by the 'recursive' strategy.` |
 | | Applying Fast-Forward Merge | `git merge --ff feature-branch` | Merges branch without creating a merge commit. | *No merge commit is created* |
