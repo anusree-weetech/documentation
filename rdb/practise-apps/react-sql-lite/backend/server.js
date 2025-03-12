@@ -14,6 +14,7 @@ const db = new sqlite3.Database("./database.db", (err) => {
   else console.log("Connected to database");
 });
 
+// create tabele, if not exists {table name}, ({column1: name: id, type:integer, primary key}, {column2: name: name, type: text}), more about this(lijk here about mcreating columns) from otehr.md
 db.run(`CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)`);
 
 // Get all users
