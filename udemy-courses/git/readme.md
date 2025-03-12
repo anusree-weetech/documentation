@@ -4,8 +4,8 @@
 | | | `git add <filename>` <br> `git commit -m "Initial commit"` <br> OR <br> `git add .` <br> `git commit -m "Initial commit"` | Adds files to staging and commits them. | `[main (root-commit) a1b2c3d] Initial commit` | `git commit --amend` | Modify the last commit without creating a new one. | `Commit message modified.` |
 | **Viewing History & Status** | Viewing Commit History | `git log` | Shows commit history. | `commit a1b2c3d (HEAD -> main) Author: John Doe Date: Wed Mar 12 2025` | `git log --oneline` | Shows commits in a condensed format. | `a1b2c3d Initial commit` |
 | | | | | | `git log --graph` | Displays a graphical representation of the branches. Press q to exit. | <img src='https://github.com/user-attachments/assets/558cb3b3-38c0-4637-9fe5-b92898156868' width=400 />|
-| | | | | | `git log -p` | Shows changes introduced in each commit. | `diff --git a/index.html b/index.html` |
-| |<img src='https://github.com/user-attachments/assets/c3ed132e-9b29-4227-b380-b83e0c7d4c43' width=200/>| `git status` | Shows modified and untracked files. | `On branch main Changes not staged for commit: modified: index.html` | `git status -s` | Shows a short summary of the status. | ` M index.html` |
+| | | | | | `git log -p` | Shows changes introduced in each commit. | 
+| |<img src='https://github.com/user-attachments/assets/c3ed132e-9b29-4227-b380-b83e0c7d4c43' width=200/> |Viewing Current Status| `git status` | Shows modified and untracked files. | `On branch main Changes not staged for commit: modified: index.html` | `git status -s` | Shows a short summary of the status. | ` M index.html` |
 | | | `git show HEAD` | Displays details of the latest commit. | `commit a1b2c3d (HEAD -> main) Author: John Doe Date: Wed Mar 12 2025` | N/A | N/A | N/A |
 | **Branching & Switching** | Creating and Switching Branches | `git branch <branch-name>` <br> `git switch <branch-name>` | Creates and switches to a new branch. | `Switched to branch '<branch-name>'` | `git branch -a` | Lists all local and remote branches. | `* main  new-feature` |
 | | | `git checkout <branch-name>` | Switches to an existing branch. | `Switched to branch '<branch-name>'` | | | |
