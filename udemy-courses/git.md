@@ -3,7 +3,7 @@
 | **Module Title**                                     | **Git Command(s)**                         | **Result**                                      | **Example Output**  |
 |------------------------------------------------------|--------------------------------------------|------------------------------------------------|---------------------|
 | Initializing the Repository & Creating the First Commit | `git init` | Initializes a Git repository. | `Initialized empty Git repository in /path/.git/` |
-| | `git add .` <br> `git commit -m "Initial commit"` | Adds files and commits them. | `[main (root-commit) a1b2c3d] Initial commit` |
+| |`git add filename` <br> `git commit -m "Initial commit"`<br>OR <br> `git add .` <br> `git commit -m "Initial commit"` | Adds files and commits them. | `[main (root-commit) a1b2c3d] Initial commit` |
 | Viewing Commit History | `git log` | Shows commit history. | `commit a1b2c3d (HEAD -> main) Author: John Doe Date: Wed Mar 12 2025` |
 | Creating and Switching Branches | `git branch feature-branch` <br> `git switch feature-branch` | Creates and switches to a new branch. | `Switched to branch 'feature-branch'` |
 | Merging Branches | `git merge feature-branch` | Merges `feature-branch` into the current branch. | `Merge made by the 'recursive' strategy.` |
