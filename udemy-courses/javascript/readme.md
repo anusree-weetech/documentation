@@ -25,3 +25,6 @@
     - Sanitize Input (for security reasons)
     - Localization/Internationalization (i18n)
     - Custom String Formatting or Processing
+
+### Modular js
+1. globalThis - somehing like window (windoe.location etc)
