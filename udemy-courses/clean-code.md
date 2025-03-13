@@ -84,7 +84,7 @@
 - classes must be short, easy to read
 must have single respsibility (SRP: single responsitbility principle)
 - cohesion: how much each  the methods use, how much of teh properties of the class
-    - none of the methods use nay class orperty: no cohesion
+    - no                                                                                                                                                                           ne of the methods use nay class orperty: no cohesion
     - all methods use all class properties: max cohesive
     - moderate number if methods use moderate number of props": highly cohesive
     - get such ind of clas, kee class seizes small
