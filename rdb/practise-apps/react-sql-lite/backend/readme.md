@@ -62,7 +62,7 @@ Here's an **improved SQL syntax reference table** with **placeholders, explanati
 | **Delete Data** | `DELETE FROM {table_name} WHERE {condition};` | Removes rows from a table based on a condition. | `DELETE FROM users WHERE id = 1;` |
 | **Querying Data** | `SELECT {columns} FROM {table_name} WHERE {condition};` | Retrieves specific data from a table. | `SELECT name FROM users WHERE id = 1;` |
 | | `SELECT * FROM {table_name};` | Selects all columns from a table. | `SELECT * FROM users;` |
-| | `SELECT * FROM {table_name} ORDER BY {column} {ASC|DESC};` | Sorts query results in ascending or descending order. | `SELECT * FROM users ORDER BY name ASC;` |
+| | `SELECT * FROM {table_name} ORDER BY {column} {ASC\|DESC};` | Sorts query results in ascending or descending order. | `SELECT * FROM users ORDER BY name ASC;` |
 | | `SELECT * FROM {table_name} LIMIT {number};` | Limits the number of rows in a result set. | `SELECT * FROM users LIMIT 5;` |
 | **Joins (Combining Data)** | `SELECT {columns} FROM {table1} INNER JOIN {table2} ON {table1}.{key} = {table2}.{key};` | Retrieves matching data from both tables. | `SELECT users.name, orders.id FROM users INNER JOIN orders ON users.id = orders.user_id;` |
 | | `SELECT {columns} FROM {table1} LEFT JOIN {table2} ON {table1}.{key} = {table2}.{key};` | Retrieves all rows from the left table and matching rows from the right table. | `SELECT users.name, orders.id FROM users LEFT JOIN orders ON users.id = orders.user_id;` |
