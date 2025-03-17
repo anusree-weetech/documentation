@@ -1,1 +1,0 @@
-## Other sql statement examples
