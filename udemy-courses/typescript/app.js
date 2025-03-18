@@ -20,3 +20,4 @@ class ProjectList {
     }
 }
 const projectList = new ProjectList();
+console.log(projectList);
