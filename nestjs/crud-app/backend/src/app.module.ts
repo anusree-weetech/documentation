@@ -1,10 +1,10 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './modules/auth/auth.module';
 import { DatabaseModule } from './database/database.module';
-import { UsersModule } from './users/users.module';
-import { PostsModule } from './posts/posts.module';
-import { LoggerMiddleware } from './middlewares/logger.middleware';
-import { RateLimiterMiddleware } from './middlewares/rate-limiter.middleware';
+import { UsersModule } from './modules/users/users.module';
+import { PostsModule } from './modules/posts/posts.module';
+import { LoggerMiddleware } from './common/middlewares/logger.middleware';
+import { RateLimiterMiddleware } from './common/middlewares/rate-limiter.middleware';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
