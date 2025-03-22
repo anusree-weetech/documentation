@@ -1,0 +1,2 @@
+### get computer
+GET http://localhost:3000/computer/run

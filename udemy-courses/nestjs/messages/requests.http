@@ -1,0 +1,17 @@
+### create message
+POST http://localhost:3000/messages
+content-type:application/json
+
+{
+    "content":"new body"
+}
+
+
+
+
+### get message by id
+GET http://localhost:3000/messages/318
+
+
+### get all messages
+GET http://localhost:3000/messages

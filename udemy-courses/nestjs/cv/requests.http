@@ -1,0 +1,41 @@
+###signup
+POST http://localhost:3000/auth/signup
+content-type:application/json
+
+{
+    "email":"d@gmail.com",
+    "password":"123"
+}
+
+###signin
+POST http://localhost:3000/auth/signin
+content-type:application/json
+
+{
+    "email":"c@gmail.com",
+    "password":"123"
+}
+
+###whoami
+GET http://localhost:3000/auth/whoami
+
+###signout
+POST http://localhost:3000/auth/signout
+
+### get user by id
+GET http://localhost:3000/auth/1
+
+### get all users by email
+GET http://localhost:3000/auth?email=a@gmail.com
+
+### delete user
+DELETE http://localhost:3000/auth/8
+
+
+### update user partially
+PATCH http://localhost:3000/auth/1
+content-type:application/json
+
+{
+    "password":"789"
+}
