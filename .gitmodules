@@ -1,0 +1,3 @@
+[submodule "git-submodules/new-git-dir"]
+	path = git-submodules/new-git-dir
+	url = https://github.com/anusree-weetech/git-submodule-example.git
