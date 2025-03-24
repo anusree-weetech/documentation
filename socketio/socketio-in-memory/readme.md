@@ -1,0 +1,3 @@
+- not a common memory between diff instances
+- horizontal scaling not possible
+- using in-memory adapter
