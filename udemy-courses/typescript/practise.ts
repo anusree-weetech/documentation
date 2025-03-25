@@ -179,39 +179,54 @@
 
 
 
-const validators: Record<string, Record<string, string[]>> = {};
+// const validators: Record<string, Record<string, string[]>> = {};
 
-function Required(target: any, propName: string) {
-  addValidator(target, propName, "required");
+// function Required(target: any, propName: string) {
+//   addValidator(target, propName, "required");
+// }
+
+// function PositiveNumber(target: any, propName: string) {
+//   addValidator(target, propName, "positive");
+// }
+
+// function addValidator(target: any, propName: string, validatorType: string) {
+//   const className = target.constructor.name;
+//   if (!validators[className]) {
+//     validators[className] = {};
+//   }
+//   if (!validators[className][propName]) {
+//     validators[className][propName] = [];
+//   }
+//   validators[className][propName].push(validatorType);
+// }
+
+// class Course {
+//   @Required
+//   title: string;
+
+//   @PositiveNumber
+//   price: number;
+
+//   constructor(t: string, p: number) {
+//     this.title = t;
+//     this.price = p;
+//   }
+// }
+
+
+// console.log(validators)
+
+import 'reflect-metadata';
+import { Product } from './product.model';
+import { plainToClass } from 'class-transformer';
+
+const products = [
+  { title: 'A Carpet', price: 29.99 },
+  { title: 'A Book', price: 10.99 },
+];
+
+const loadedProducts = plainToClass(Product, products);
+
+for (const prod of loadedProducts) {
+  console.log(prod.getInformation());
 }
-
-function PositiveNumber(target: any, propName: string) {
-  addValidator(target, propName, "positive");
-}
-
-function addValidator(target: any, propName: string, validatorType: string) {
-  const className = target.constructor.name;
-  if (!validators[className]) {
-    validators[className] = {};
-  }
-  if (!validators[className][propName]) {
-    validators[className][propName] = [];
-  }
-  validators[className][propName].push(validatorType);
-}
-
-class Course {
-  @Required
-  title: string;
-
-  @PositiveNumber
-  price: number;
-
-  constructor(t: string, p: number) {
-    this.title = t;
-    this.price = p;
-  }
-}
-
-
-console.log(validators)

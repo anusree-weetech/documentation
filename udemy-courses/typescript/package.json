@@ -4,13 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"tsc && node index"
+    "start": "tsc && node index"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "class-transformer": "^0.5.1",
+    "reflect-metadata": "^0.2.2",
     "typescript": "^5.8.2"
   }
 }
