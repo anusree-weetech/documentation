@@ -1,3 +1,6 @@
 [submodule "git-submodules/new-git-dir"]
 	path = git-submodules/new-git-dir
 	url = https://github.com/anusree-weetech/git-submodule-example.git
+[submodule "udemy-courses/typescript/understanding-typescript"]
+	path = udemy-courses/typescript/understanding-typescript
+	url = https://github.com/anusree-weetech/understanding-typescript.git
