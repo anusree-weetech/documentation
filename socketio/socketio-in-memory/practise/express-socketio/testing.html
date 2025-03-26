@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Namespace Example</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <h2>Socket.IO Namespace Example</h2>
+    
+    <input type="text" id="messageInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <h3>Messages:</h3>
+    <ul id="messages"></ul>
+
+    <script>
+        // Connect to the "/chat" namespace
+        const chatSocket = io("/chat");
+
+        // Listen for connection success
+        chatSocket.on("connect", () => {
+            console.log("Connected to /chat namespace:", chatSocket.id);
+        });
+
+        // Listen for messages from the server
+        chatSocket.on("message", (data) => {
+            console.log("Received:", data);
+
+            // Display message in the UI
+            const li = document.createElement("li");
+            li.textContent = data;
+            document.getElementById("messages").appendChild(li);
+        });
+
+        // Send a message to the server
+        function sendMessage() {
+            const input = document.getElementById("messageInput");
+            const message = input.value;
+            if (message.trim()) {
+                chatSocket.emit("message", message);
+                input.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
