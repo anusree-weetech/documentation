@@ -1,5 +1,5 @@
 ### Docker
-- used for running containers on linux m/c
+- used for running containers on linux m/c .uses linus namespaces and cgroups to create isolation
 - docker desktop: virtualization layer that enables compatibility between Docker containers and Windows/macOS machines
 - docker build: command used to create docker image
 - docker image: read-only templates to used to create containers
@@ -7,3 +7,8 @@
 - docker hub: online registry to store all docker images
 - docker repository: collectin of similar images with sames names but different versions 
 - docker file: a text file containing commans to create an image. generally made based on the base image of teh applciation yo wna tot run based on 
+- docker engine: core software that runs and manages containers in a machine. it also isolates appications from the host system. components:
+    - docker daemon (dockerd): main background process that runs on our machine. manages containers/images/networks. listens for api requests and executes them.
+    - docker cli: cli used to communicate with docker daemon
+    - container runtime: part fo docker that actually runs containers. uses contrainerd(a lightweight runtime) to manage lifecycles
+    - 
