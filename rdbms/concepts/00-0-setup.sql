@@ -1,0 +1,1 @@
+CREATE DATABASE practise_db
