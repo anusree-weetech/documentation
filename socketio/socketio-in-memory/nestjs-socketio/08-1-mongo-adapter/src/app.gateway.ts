@@ -1,14 +1,14 @@
 import { Logger } from '@nestjs/common';
 import {
-  WebSocketGateway,
-  WebSocketServer,
+  ConnectedSocket,
   OnGatewayConnection,
   OnGatewayDisconnect,
   OnGatewayInit,
-  ConnectedSocket,
+  WebSocketGateway,
+  WebSocketServer,
 } from '@nestjs/websockets';
-import * as redisAdapter from '@socket.io/redis-adapter';
-import Redis from 'ioredis';
+import * as mongodb from 'mongodb';
+import * as mongoAdapter from '@socket.io/mongo-adapter';
 import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway()
@@ -17,19 +17,50 @@ export class AppGateway
 {
   @WebSocketServer() server: Server;
   private logger: Logger = new Logger('ApiGateway');
-  private pubClient = new Redis('redis://localhost:6379');
-  private subClient = this.pubClient.duplicate();
+  private mongoClient: mongodb.MongoClient;
+  private mongoCollection: mongodb.Collection;
+
+  private async initializeMongoAdapter() {
+    const DB = 'socketDB';
+    const COLLECTION = 'socket.io-adapter';
+
+    this.mongoClient = new mongodb.MongoClient(
+      'mongodb://localhost:27017/?replicaSet=rs0&directConnection=true',
+    );
+    await this.mongoClient.connect();
+    const db = this.mongoClient.db(DB);
+
+    // Get list of collections
+    const collections = await db
+      .listCollections({ name: COLLECTION })
+      .toArray();
+
+    // Check if collection exists, create if it doesn't
+    if (collections.length === 0) {
+      await db.createCollection(COLLECTION, {
+        capped: true,
+        size: 1e6,
+      });
+      console.log('✅ Collection created');
+    } else {
+      console.log('✅ Collection already exists');
+    }
+
+    this.mongoCollection = db.collection(COLLECTION);
+    this.server.adapter(mongoAdapter.createAdapter(this.mongoCollection));
+  }
 
   afterInit(server: Server) {
     this.logger.log('Websocket server initialised');
-    server.adapter(redisAdapter.createAdapter(this.pubClient, this.subClient));
+
+    this.initializeMongoAdapter();
   }
 
-  handleConnection(@ConnectedSocket() socket: Socket) {
-    this.logger.log(`User connected with id: ${socket.id}`);
+  handleConnection(@ConnectedSocket() client: Socket) {
+    this.logger.log(`User connected with id: ${client.id}`);
 
     // Example of broadcasting a message when a user sends 'message'
-    socket.on('message', () => {
+    client.on('message', () => {
       this.server.emit('message', 'Broadcasted message');
     });
   }
