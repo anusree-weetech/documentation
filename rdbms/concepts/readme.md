@@ -473,35 +473,104 @@ CREATE TABLE users_profile (
 - Views are virtual tables in a database, allowing you to store queries and access them like a table.
 - Views are more like templates or predefined queries that can be reused, rather than virtual tables in the strictest sense.
 
-1.  Simple Views vs. Complex Views
+#### 1. Simple Views vs. Complex Views
 
-#### 🔹 Simple Views:
+##### 🔹 Simple Views:
 
 - reated using a single SELECT query without joins or complex operations.
 
 - usually represents a single table.
 
-❌ Example: Simple View (Single Table)
-sql
-Copy
-Edit
+- Example: Simple View (Single Table)
+
+```sql
 CREATE VIEW employee_view AS
 SELECT employee_id, name, department
 FROM employees;
-Now, you can query the view just like a table:
+```
 
-sql
-Copy
-Edit
-SELECT \* FROM employee_view;
-This view simply fetches columns from the employees table, making it simple.
+- Now, you can query the view just like a table:
 
-🔹 Complex Views:
-A complex view can contain multiple tables, joins, aggregations, or subqueries.
+```sql
+SELECT * FROM employee_view;
+```
 
-It can represent more sophisticated queries.
+##### 🔹 Complex Views:
 
-❌ Example: Complex View (Multiple Tables and Join)
+- can contain multiple tables, joins, aggregations, or subqueries.
+
+- represent more sophisticated queries.
+
+- Example: Complex View (Multiple Tables and Join)
+
+```sql
+CREATE VIEW sales_summary AS
+SELECT o.order_id, o.customer_id, SUM(oi.quantity \* oi.price) AS total_price
+FROM orders o
+JOIN order_items oi ON o.order_id = oi.order_id
+GROUP BY o.order_id, o.customer_id;
+```
+
+#### 2. Materialized Views & Performance Benefits
+
+##### 🔹 What are Materialized Views?
+
+- stores the result of the query physically in the database.
+
+- does not require re-executing the query each time it is accessed, improving performance, especially for expensive operations. but it requires refreshing/updating quite often.
+
+- Example: Creating a Materialized View
+
+```sql
+CREATE MATERIALIZED VIEW product_sales_summary AS
+SELECT product_id, SUM(quantity) AS total_sales
+FROM order_items
+GROUP BY product_id;
+```
+
+##### 🔹 Performance Benefits:
+
+- The result of product_sales_summary is stored physically, so future queries against it are much faster.
+
+- The trade-off: You need to refresh the materialized view periodically to ensure data is up-to-date.
+- To refresh the materialized view (recalculate its data), you can use:
+
+```sql
+REFRESH MATERIALIZED VIEW product_sales_summary;
+```
+
+#### 3. Updatable vs. Non-Updatable Views
+
+##### 🔹 Updatable Views:
+
+- Updatable views allow you to perform DML operations (data manipultaion operations: INSERT, UPDATE, DELETE) directly on them.
+
+- They must be based on simple queries without complex joins or aggregations.
+
+- Example: Updatable View (Single Table)
+
+```sql
+CREATE VIEW employee_view AS
+SELECT employee_id, name, department
+FROM employees;
+```
+
+You can update the employee_view:
+
+```sql
+UPDATE employee_view
+SET department = 'HR'
+WHERE employee_id = 1;
+```
+
+The changes will be reflected in the employees table since the view is directly tied to a single table.
+
+🔹 Non-Updatable Views:
+Non-updatable views are created using complex queries involving joins, aggregations, or subqueries.
+
+These views cannot be directly updated, but you can query them.
+
+❌ Example: Non-Updatable View (Join & Aggregation)
 sql
 Copy
 Edit
@@ -510,3 +579,4 @@ SELECT o.order_id, o.customer_id, SUM(oi.quantity \* oi.price) AS total_price
 FROM orders o
 JOIN order_items oi ON o.order_id = oi.order_id
 GROUP BY o.order_id, o.customer_id;
+Attempting to update or insert directly into sales_summary will result in an error because of its complex nature. Instead, you'll have to update the underlying tables (orders and order_items).
