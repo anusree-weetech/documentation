@@ -1,0 +1,9 @@
+h1 Welcome #{name}
+if isAdmin
+  p You have admin access.
+else
+  p You are a regular user.
+
+ul
+  each user in users
+    li= user
