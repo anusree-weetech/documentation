@@ -571,12 +571,337 @@ Non-updatable views are created using complex queries involving joins, aggregati
 These views cannot be directly updated, but you can query them.
 
 ❌ Example: Non-Updatable View (Join & Aggregation)
-sql
-Copy
-Edit
+
+```sql
 CREATE VIEW sales_summary AS
 SELECT o.order_id, o.customer_id, SUM(oi.quantity \* oi.price) AS total_price
 FROM orders o
 JOIN order_items oi ON o.order_id = oi.order_id
 GROUP BY o.order_id, o.customer_id;
+```
+
 Attempting to update or insert directly into sales_summary will result in an error because of its complex nature. Instead, you'll have to update the underlying tables (orders and order_items).
+
+### 3. ACID Properties
+
+#### 1. Atomicity (All or Nothing)
+
+- Example: Bank transfer between two accounts.
+
+```sql
+BEGIN;  -- Start transaction
+UPDATE accounts SET balance = balance - 100 WHERE account_id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE account_id = 2;
+COMMIT;  -- Ensure both changes are applied together
+```
+
+- If any update fails (e.g., insufficient funds), the transaction rolls back, ensuring no partial updates.
+
+#### 2. Consistency (Valid State)
+
+- Example: Ensure no account balance goes negative.
+
+```sql
+ALTER TABLE accounts ADD CONSTRAINT balance_check CHECK (balance >= 0);
+```
+
+- Now, if someone tries to withdraw more than the available balance, PostgreSQL rejects the transaction, keeping the data valid.
+
+#### 3. Isolation (No Interference)
+
+- Example: Two customers trying to book the same movie ticket.
+
+```sql
+BEGIN;
+SELECT * FROM tickets WHERE ticket_id = 1 FOR UPDATE;  -- Locks the ticket row
+UPDATE tickets SET status = 'BOOKED' WHERE ticket_id = 1;
+COMMIT;
+```
+
+- If another transaction tries to book the same ticket simultaneously, it must wait until the first one finishes, preventing conflicts.
+
+#### 4. Durability (Permanent Changes)
+
+- Example: Ensure an order is recorded even after a crash.
+
+```sql
+BEGIN;
+INSERT INTO orders (customer_id, product_id, amount) VALUES (1, 101, 50);
+COMMIT;
+```
+
+- Even if the server crashes right after `COMMIT;`, the order remains saved in the database, thanks to PostgreSQL’s WAL (Write-Ahead Logging).
+
+### 4. Keys and Relationships
+
+#### 1. Primary Key (PK) – Unique Identifier
+
+- Example: id uniquely identifies each user in the users table.
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL
+);
+```
+
+- Each id is unique and cannot be NULL.
+
+#### 2. Foreign Key (FK) – Relationship Between Tables
+
+- Example: The orders table references the users table.
+
+```sql
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id),  -- FK linking to users table
+    total_amount DECIMAL(10,2) NOT NULL
+);
+```
+
+- Each order belongs to a valid user_id from the users table.
+
+#### 3. Composite Key – Multiple Columns as Primary Key
+
+- Example: A student_courses table where a student can enroll in multiple courses.
+
+```sql
+CREATE TABLE student_courses (
+    student_id INT,
+    course_id INT,
+    PRIMARY KEY (student_id, course_id)  -- Composite PK
+);
+```
+
+- Prevents duplicate (student_id, course_id) pairs but allows a student to enroll in multiple courses.
+
+#### 4. Candidate Key – Potential Primary Keys
+
+- Example: In the employees table, both employee_id and ssn are unique.
+
+```sql
+CREATE TABLE employees (
+    employee_id SERIAL PRIMARY KEY,  -- Chosen as the PK
+    ssn TEXT UNIQUE NOT NULL  -- Candidate key (could also be a PK)
+);
+```
+
+- Both employee_id and ssn are unique, but we choose employee_id as the primary key.
+- If needed, a Candidate Key can be promoted to be the new Primary Key if business rules change
+
+### 5. SQL (Structured Query Language)
+
+#### 1. DDL (Data Definition Language) – Defines Database Structure
+
+- Example: Creating, altering, and dropping a table.
+
+```SQL
+-- CREATE a table
+CREATE TABLE employees (
+id SERIAL PRIMARY KEY,
+name TEXT NOT NULL,
+salary DECIMAL(10,2)
+);
+
+-- ALTER a table (adding a column)
+ALTER TABLE employees ADD COLUMN department TEXT;
+
+-- DROP a table (removing it completely)
+DROP TABLE employees;
+```
+
+- DDL statements modify the database structure.
+
+#### 2. DML (Data Manipulation Language) – Modify Data
+
+- Example: Inserting, updating, and deleting records.
+
+```sql
+-- INSERT a new employee
+INSERT INTO employees (name, salary, department) VALUES ('Alice', 50000, 'HR');
+
+-- UPDATE an employee's salary
+UPDATE employees SET salary = 55000 WHERE name = 'Alice';
+
+-- DELETE an employee
+DELETE FROM employees WHERE name = 'Alice';
+```
+
+- DML is used to manipulate data inside tables.
+
+#### 3. DQL (Data Query Language) – Retrieve Data
+
+- Example: Selecting data from a table.
+
+```sql
+-- SELECT all employees
+SELECT \* FROM employees;
+
+-- SELECT specific columns with a condition
+SELECT name, salary FROM employees WHERE department = 'HR';
+```
+
+- DQL helps fetch data from the database.
+
+#### 4. DCL (Data Control Language) – Manage Permissions
+
+- Example: Granting and revoking access.
+
+```sql
+-- GRANT permission to a user
+GRANT SELECT, INSERT ON employees TO user1;
+
+-- REVOKE permission from a user
+REVOKE INSERT ON employees FROM user1;
+```
+
+- DCL is used to control access to database objects.
+
+#### 5. TCL (Transaction Control Language) – Manage Transactions
+
+- Example: Controlling transactions in a banking system.
+
+```sql
+-- BEGIN a transaction
+BEGIN;
+
+-- Deduct from one account
+UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+
+-- Add to another account
+UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+
+-- COMMIT transaction (save changes)
+COMMIT;
+
+-- ROLLBACK transaction (undo changes if something goes wrong)
+ROLLBACK;
+
+-- SAVEPOINT (partial rollback)
+SAVEPOINT before_update;
+UPDATE employees SET salary = 60000 WHERE id = 1;
+ROLLBACK TO before_update; -- Undo only the last update
+```
+
+- TCL ensures data integrity in multi-step transactions.
+
+### 6. Indexing
+
+#### 1. Primary Index – Automatically Created for Primary Key
+
+- Example: When defining a PRIMARY KEY, PostgreSQL automatically creates an index.
+
+```sql
+CREATE TABLE employees (
+id SERIAL PRIMARY KEY, -- Primary Index created automatically
+name TEXT NOT NULL,
+salary DECIMAL(10,2)
+);
+```
+
+- The index improves searches on id, ensuring fast lookups.
+
+#### 2. Secondary Index – Manually Created for Frequent Queries
+
+- Example: Creating an index on name to speed up searches.
+
+````sql
+CREATE INDEX idx_employee_name ON employees(name);
+```sql
+-- Fast lookup using the index
+SELECT \* FROM employees WHERE name = 'Alice';
+-  This index improves search performance on name.
+````
+
+#### 3. Clustered Index – Physically Reorders Data (Simulated in PostgreSQL)
+
+- Example: PostgreSQL does not support clustered indexes directly, but you can simulate them using CLUSTER.
+
+```sql
+-- Create an index
+CREATE INDEX idx_employee_salary ON employees(salary);
+
+-- Cluster the table based on this index
+CLUSTER employees USING idx_employee_salary;
+```
+
+- This reorganizes the table physically according to salary, improving range queries.
+
+#### 4. Non-Clustered Index – Logical Ordering Without Reordering Data
+
+- Example: Creating an index on salary without changing row order.
+
+```sql
+CREATE INDEX idx_salary ON employees(salary);
+-  This index speeds up salary-based lookups but does not change the physical order of rows.
+```
+
+### 7. Stored Procedures and Triggers
+
+#### 1. Stored Procedure – Precompiled SQL for Reusability
+
+- Example: A stored procedure to give a salary raise to an employee.
+
+```sql
+CREATE OR REPLACE PROCEDURE give_salary_raise(emp_id INT, raise_amount DECIMAL)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+UPDATE employees SET salary = salary + raise_amount WHERE id = emp_id;
+END;
+
+$$
+;
+```
+
+- Execute the stored procedure:
+
+```sql
+CALL give_salary_raise(1, 5000);
+```
+
+- This procedure updates an employee’s salary without writing the UPDATE statement every time.
+
+#### 2. Trigger – Automatic Execution on an Event
+
+- Example: A trigger that logs salary changes in an audit table.
+
+```sql
+-- Create an audit table to store salary change history
+CREATE TABLE salary_audit (
+    audit_id SERIAL PRIMARY KEY,
+    emp_id INT,
+    old_salary DECIMAL(10,2),
+    new_salary DECIMAL(10,2),
+    changed_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Create a trigger function to log salary changes
+CREATE OR REPLACE FUNCTION log_salary_changes()
+RETURNS TRIGGER AS
+$$
+
+BEGIN
+INSERT INTO salary_audit (emp_id, old_salary, new_salary)
+VALUES (OLD.id, OLD.salary, NEW.salary);
+RETURN NEW;
+END;
+
+$$
+LANGUAGE plpgsql;
+
+-- Create the trigger to fire on salary updates
+CREATE TRIGGER salary_update_trigger
+AFTER UPDATE OF salary ON employees
+FOR EACH ROW
+EXECUTE FUNCTION log_salary_changes();
+```
+
+- When an employee's salary is updated, the trigger logs the old and new salary automatically:
+
+```sql
+UPDATE employees SET salary = 60000 WHERE id = 1;
+-  The trigger ensures salary changes are always tracked without manual logging.
+$$
+```
