@@ -1,7 +1,8 @@
 ### backend
-- nestjs
-- socketio
-- nodejs
+
+- [x] nestjs
+- [x] socketio
+- [x] nodejs
 - microservice
 - docker and kubernetes
 - er diagram
@@ -12,6 +13,7 @@
 - sequeize
 
 ### frontend
+
 - nextjs
 - tanstack query react
 - authentication and authorisation in react
@@ -21,6 +23,7 @@
 - strapi
 
 ### devops
+
 - pometheus
 - wordpress with custom domain
 - grafana
@@ -28,5 +31,14 @@
 - jira
 
 ### others
+
 - firebase
-- 
+  | framework| description|
+  |--|--|
+  |Express + GraphQL.js| Uses express-graphql, a lightweight GraphQL HTTP server for Express.|
+  |Mercurius (Fastify) |High-performance GraphQL for Fastify (faster than Apollo).|
+  |GraphQL Yoga| Simple, easy-to-use GraphQL server (built on graphql-js).|
+  |Hasura| Instant GraphQL over PostgreSQL (no backend coding needed).|
+  |Prisma |Database ORM with built-in GraphQL support.|
+  |NestJS + GraphQL| Full GraphQL support in NestJS with Apollo or Mercurius.|
+  - circle ci: ci/cd

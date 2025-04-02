@@ -1,0 +1,25 @@
+# A simple User type
+type User {
+  id: ID!
+  name: String!
+}
+
+"""
+Root Query Type
+"""
+type Query {
+  """
+  Fetch a user by ID
+  """
+  getUser(id: ID!): User
+}
+
+"""
+Root Mutation Type
+"""
+type Mutation {
+  """
+  Create a new user with an ID and name
+  """
+  createUser(id: ID!, name: String!): User
+}

@@ -1,0 +1,1 @@
+opens the link in graphql yoga

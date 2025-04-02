@@ -1,0 +1,10 @@
+# second most popular way of writing typedefs
+# includes defining types in .graphql file and tehn loading it in js file
+
+type Call {
+  callHello: String
+}
+
+type Query {
+  getCall: Call
+}
