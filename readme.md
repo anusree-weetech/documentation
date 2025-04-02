@@ -31,6 +31,8 @@
   - [ ] postgres-nest cloud app
 - [ ] graphql concepts
 - [ ] firebase concepts
+- [ ] doker and kunernetes concepts
+  - [ ] docker and kubernetes app
 
 
 ## rdbms concepts
