@@ -3,14 +3,14 @@
 - [x] nestjs
 - [x] socketio
 - [x] nodejs
-- [ ] microservice
+- [ ] sequelize 
 - [ ] docker and kubernetes
+- [ ] microservice
 - [ ] er diagram
 - [ ] self hosted runner github
 - [ ] husky, pritter, eslint , jest
 - [ ] appstle
 - [ ] monorepo
-- [ ] sequelize
 
 ### frontend
 
