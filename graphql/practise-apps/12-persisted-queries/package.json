@@ -1,0 +1,16 @@
+{
+  "name": "12-persisted-queries",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "apollo-server": "^3.13.0",
+    "apollo-server-plugin-operation-registry": "^0.12.0"
+  }
+}

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: nginx-config
+data: 
+  nginx.config: |
+    events {}
+
+    http {
+    # keeping possibility for future server instances
+      upstream graphql_backend{
+        server graphql-service:80;
+      }
+
+      server{
+        listen:80;
+        location /graphql {
+          proxy_pass http://graphql_backend;
+        }
+      }
+    }
+  

@@ -1,0 +1,27 @@
+# Defines how to run GraphQL instances in Kubernetes
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphql-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: graphql
+  template:
+    metadata:
+      labels:
+        app: graphql
+    spec:
+      containers:
+      - name: graphql
+        image: my-gaphql-server:latest
+        ports:
+        - containerPort: 4000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
