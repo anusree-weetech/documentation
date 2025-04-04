@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: graphql
-        image: my-gaphql-server:latest
+        image: my-graphql-server:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 4000
         resources:
