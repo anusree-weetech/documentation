@@ -1,0 +1,22 @@
+{
+  "name": "15-tools-postgraphile",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "node-pg-migrate up -m src/db/migrations",
+    "migrate:down": "node-pg-migrate down -m src/db/migrations",
+    "start":"node src/index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "config": "^3.3.12",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "node-pg-migrate": "^7.9.1",
+    "postgraphile": "^4.14.0"
+  }
+}

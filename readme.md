@@ -29,9 +29,10 @@
   - [ ] postgres-nest local app
   - [ ] postgres-express cloud app
   - [ ] postgres-nest cloud app
-- [ ] graphql concepts
+- [x] graphql concepts
+   - [ ] graphql-nest app
 - [ ] firebase concepts
-- [ ] doker and kunernetes concepts
+- [ ] docker and kunernetes concepts
   - [ ] docker and kubernetes app
 
 
