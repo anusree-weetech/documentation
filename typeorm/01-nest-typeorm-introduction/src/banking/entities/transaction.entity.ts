@@ -1,12 +1,16 @@
-import { ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Account } from './account.entity';
 
-export class TransactionEntity {
-    @PrimaryGeneratedColumn('uuid')
+@Entity('transactions') 
+export class Transaction{
+  @PrimaryGeneratedColumn('uuid')
   id: string;
-  @ManyToMany(()=>Accout)
+  @ManyToMany(() => Account)
   fromAccount: Account;
+  @ManyToMany(() => Account)
   toAccount: Account;
-  amount: number;
+  @Column()
   date: Date;
+  @Column()
+  amount: number;
 }

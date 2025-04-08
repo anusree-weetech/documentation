@@ -1,13 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
-import { BankingnestService } from './g/bankingnest/bankingnest.service';
+// import { BankingnestService } from './g/bankingnest/bankingnest.service';
 import { BankingService } from './banking/banking.service';
 import { BankingController } from './banking/banking.controller';
 import { BankingModule } from './banking/banking.module';
+import AppDataSource from './data-source';
+import { typeormConfig } from './typeorm.config';
 
+// console.log(AppDataSource.options)
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -18,14 +21,11 @@ import { BankingModule } from './banking/banking.module';
       password: 'yourpassword',
       database: 'users_db',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false, // autosync disabled
-      migrations: [__dirname + '/migrations/*{.ts,.js}'],
-      migrationsRun: true, // Optional: run migrations automatically on app start
     }),
     UsersModule,
     BankingModule,
   ],
   controllers: [AppController, BankingController],
-  providers: [AppService, BankingnestService, BankingService],
+  providers: [AppService, BankingService],
 })
 export class AppModule {}
