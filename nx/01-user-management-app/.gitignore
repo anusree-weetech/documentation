@@ -1,4 +1,3 @@
-
 .nx/installation
 .nx/cache
 .nx/workspace-data# Logs
@@ -137,3 +136,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
