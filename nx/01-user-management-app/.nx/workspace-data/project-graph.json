@@ -116,7 +116,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}/dist\\apps\\auth-service"
+              "{workspaceRoot}/dist/apps/auth-service"
             ],
             "metadata": {
               "technologies": [
@@ -252,7 +252,7 @@
             "inputs": [
               "default",
               "^default",
-              "{workspaceRoot}\\jest.preset.js",
+              "{workspaceRoot}/jest.preset.js",
               {
                 "externalDependencies": [
                   "jest"
@@ -260,7 +260,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}\\coverage\\apps\\auth-service"
+              "{workspaceRoot}/coverage/apps/auth-service"
             ],
             "executor": "nx:run-commands",
             "options": {
@@ -341,8 +341,8 @@
           },
           "e2e-ci--src/e2e/app.cy.ts": {
             "outputs": [
-              "{workspaceRoot}\\dist\\cypress\\apps\\frontend-e2e\\videos\\src-e2e-app-cy-ts",
-              "{workspaceRoot}\\dist\\cypress\\apps\\frontend-e2e\\screenshots\\src-e2e-app-cy-ts"
+              "{workspaceRoot}/dist/cypress/apps/frontend-e2e/videos/src-e2e-app-cy-ts",
+              "{workspaceRoot}/dist/cypress/apps/frontend-e2e/screenshots/src-e2e-app-cy-ts"
             ],
             "inputs": [
               "default",
@@ -356,7 +356,7 @@
             "cache": true,
             "options": {
               "cwd": "apps/frontend-e2e",
-              "command": "cypress run --env webServerCommand=\"npx nx run frontend:preview\" --spec src/e2e/app.cy.ts --config=\"{\\\"baseUrl\\\":\\\"http://localhost:4300\\\",\\\"e2e\\\":{\\\"videosFolder\\\":\\\"..\\\\\\\\..\\\\\\\\dist\\\\\\\\cypress\\\\\\\\apps\\\\\\\\frontend-e2e\\\\\\\\videos\\\\\\\\src-e2e-app-cy-ts\\\",\\\"screenshotsFolder\\\":\\\"..\\\\\\\\..\\\\\\\\dist\\\\\\\\cypress\\\\\\\\apps\\\\\\\\frontend-e2e\\\\\\\\screenshots\\\\\\\\src-e2e-app-cy-ts\\\"}}\""
+              "command": "cypress run --env webServerCommand=\"npx nx run frontend:preview\" --spec src/e2e/app.cy.ts --config=\"{\\\"baseUrl\\\":\\\"http://localhost:4300\\\",\\\"e2e\\\":{\\\"videosFolder\\\":\\\"../../dist/cypress/apps/frontend-e2e/videos/src-e2e-app-cy-ts\\\",\\\"screenshotsFolder\\\":\\\"../../dist/cypress/apps/frontend-e2e/screenshots/src-e2e-app-cy-ts\\\"}}\""
             },
             "parallelism": false,
             "metadata": {
@@ -477,7 +477,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}/dist\\apps\\user-service"
+              "{workspaceRoot}/dist/apps/user-service"
             ],
             "metadata": {
               "technologies": [
@@ -613,7 +613,7 @@
             "inputs": [
               "default",
               "^default",
-              "{workspaceRoot}\\jest.preset.js",
+              "{workspaceRoot}/jest.preset.js",
               {
                 "externalDependencies": [
                   "jest"
@@ -621,7 +621,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}\\coverage\\apps\\user-service"
+              "{workspaceRoot}/coverage/apps/user-service"
             ],
             "executor": "nx:run-commands",
             "options": {
@@ -666,7 +666,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}/dist\\apps\\api-gateway"
+              "{workspaceRoot}/dist/apps/api-gateway"
             ],
             "metadata": {
               "technologies": [
@@ -897,7 +897,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}\\dist\\apps\\frontend"
+              "{workspaceRoot}/dist/apps/frontend"
             ],
             "metadata": {
               "technologies": [
@@ -1079,7 +1079,7 @@
               "default",
               "^default",
               "{workspaceRoot}/eslint.base.config.mjs",
-              "{workspaceRoot}/eslint.config.mjs",
+              "{projectRoot}/eslint.config.mjs",
               "{workspaceRoot}/tools/eslint-rules/**/*",
               {
                 "externalDependencies": [
@@ -1134,7 +1134,7 @@
             "inputs": [
               "default",
               "^default",
-              "{workspaceRoot}\\jest.preset.js",
+              "{workspaceRoot}/jest.preset.js",
               {
                 "externalDependencies": [
                   "jest"
@@ -1142,7 +1142,7 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}\\coverage\\lib\\common"
+              "{workspaceRoot}/coverage/lib/common"
             ],
             "executor": "nx:run-commands",
             "configurations": {},
@@ -1157,8 +1157,8 @@
         "implicitDependencies": []
       }
     },
-    "01-user-management-app": {
-      "name": "01-user-management-app",
+    "nx": {
+      "name": "nx",
       "type": "lib",
       "data": {
         "root": ".",
@@ -1203,7 +1203,7 @@
             "parallelism": true
           }
         },
-        "name": "01-user-management-app",
+        "name": "nx",
         "implicitDependencies": [],
         "tags": []
       }
@@ -3271,6 +3271,15 @@
         "hash": "sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA=="
       }
     },
+    "npm:@ioredis/commands": {
+      "type": "npm",
+      "name": "npm:@ioredis/commands",
+      "data": {
+        "version": "1.2.0",
+        "packageName": "@ioredis/commands",
+        "hash": "sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg=="
+      }
+    },
     "npm:@isaacs/cliui": {
       "type": "npm",
       "name": "npm:@isaacs/cliui",
@@ -4342,6 +4351,15 @@
         "hash": "sha512-eGlWESkACMKti+iZk1hs6FUY/UqObmMaa8HAN9JLnaYkoLf1Jeh+EuHlGnfqo/Rq77oznNLIyaA3PFjrFDlNUg=="
       }
     },
+    "npm:@nestjs/typeorm": {
+      "type": "npm",
+      "name": "npm:@nestjs/typeorm",
+      "data": {
+        "version": "11.0.0",
+        "packageName": "@nestjs/typeorm",
+        "hash": "sha512-SOeUQl70Lb2OfhGkvnh4KXWlsd+zA08RuuQgT7kKbzivngxzSo1Oc7Usu5VxCxACQC9wc2l9esOHILSJeK7rJA=="
+      }
+    },
     "npm:@nodelib/fs.scandir": {
       "type": "npm",
       "name": "npm:@nodelib/fs.scandir",
@@ -5141,6 +5159,15 @@
         "version": "10.3.0",
         "packageName": "@sinonjs/fake-timers",
         "hash": "sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA=="
+      }
+    },
+    "npm:@sqltools/formatter": {
+      "type": "npm",
+      "name": "npm:@sqltools/formatter",
+      "data": {
+        "version": "1.2.5",
+        "packageName": "@sqltools/formatter",
+        "hash": "sha512-Uy0+khmZqUrUGm5dmMqVlnvufZRSK0FbYzVgp0UMstm+F5+W2/jnEEQyc9vo1ZR/E5ZI/B1WjjoTqBqwJL6Krw=="
       }
     },
     "npm:@svgr/babel-plugin-add-jsx-attribute": {
@@ -6718,6 +6745,15 @@
         "hash": "sha512-1APHAyr3+PCamwNw3bXCPp4HFLONZt/yIH0sZp0/469KWNTEy+qN5jQ3GVX6DMZ1UXAi34yVwtTeaG/HpBuuzw=="
       }
     },
+    "npm:ansis": {
+      "type": "npm",
+      "name": "npm:ansis",
+      "data": {
+        "version": "3.17.0",
+        "packageName": "ansis",
+        "hash": "sha512-0qWUglt9JEqLFr3w1I1pbrChn1grhaiAR2ocX1PP/flRmxgtwTzPFFFnfIlD6aMOLQZgSuCRlidD70lvx8yhzg=="
+      }
+    },
     "npm:anymatch": {
       "type": "npm",
       "name": "npm:anymatch",
@@ -6725,6 +6761,15 @@
         "version": "3.1.3",
         "packageName": "anymatch",
         "hash": "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw=="
+      }
+    },
+    "npm:app-root-path": {
+      "type": "npm",
+      "name": "npm:app-root-path",
+      "data": {
+        "version": "3.1.0",
+        "packageName": "app-root-path",
+        "hash": "sha512-biN3PwB2gUtjaYy/isrU3aNWI5w+fAfvHkSvCKeQGxhmYpwKFUxudR3Yya+KqVRHBmEDYh+/lTozYCFbmzX4nA=="
       }
     },
     "npm:append-field": {
@@ -7483,6 +7528,15 @@
         "hash": "sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ=="
       }
     },
+    "npm:buffer@6.0.3": {
+      "type": "npm",
+      "name": "npm:buffer@6.0.3",
+      "data": {
+        "version": "6.0.3",
+        "packageName": "buffer",
+        "hash": "sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA=="
+      }
+    },
     "npm:buffer-builder": {
       "type": "npm",
       "name": "npm:buffer-builder",
@@ -7841,6 +7895,15 @@
         "version": "5.0.0",
         "packageName": "is-plain-object",
         "hash": "sha512-VRSzKkbMm5jMDoKLbltAkFQ5Qr7VDiTFGXxYFXXowVj387GeGNOCsOH6Msy00SGZ3Fp84b1Naa1psqgcCIEP5Q=="
+      }
+    },
+    "npm:cluster-key-slot": {
+      "type": "npm",
+      "name": "npm:cluster-key-slot",
+      "data": {
+        "version": "1.1.2",
+        "packageName": "cluster-key-slot",
+        "hash": "sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA=="
       }
     },
     "npm:co": {
@@ -8831,6 +8894,15 @@
         "version": "1.0.0",
         "packageName": "delegates",
         "hash": "sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ=="
+      }
+    },
+    "npm:denque": {
+      "type": "npm",
+      "name": "npm:denque",
+      "data": {
+        "version": "2.1.0",
+        "packageName": "denque",
+        "hash": "sha512-HVQE3AAb/pxF8fQAoiqpvg9i3evqug3hoiwakOyZAwJm+6vZehbkYXZ0l4JxS+I3QxM97v5aaRNhj8v5oBhekw=="
       }
     },
     "npm:depd": {
@@ -11056,6 +11128,15 @@
         "hash": "sha512-6xwYfHbajpoF0xLW+iwLkhwgvLoZDfjYfoFNu8ftMoXINzwuymNLd9u/KmwtdT2GbR+/Cz66otEGEVVUHX9QLQ=="
       }
     },
+    "npm:ioredis": {
+      "type": "npm",
+      "name": "npm:ioredis",
+      "data": {
+        "version": "5.6.0",
+        "packageName": "ioredis",
+        "hash": "sha512-tBZlIIWbndeWBWCXWZiqtOF/yxf6yZX3tAlTJ7nfo5jhd6dctNxF7QnYlZLZ1a0o0pDoen7CgZqO+zjNaFbJAg=="
+      }
+    },
     "npm:ipaddr.js": {
       "type": "npm",
       "name": "npm:ipaddr.js",
@@ -12316,6 +12397,24 @@
         "hash": "sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow=="
       }
     },
+    "npm:lodash.defaults": {
+      "type": "npm",
+      "name": "npm:lodash.defaults",
+      "data": {
+        "version": "4.2.0",
+        "packageName": "lodash.defaults",
+        "hash": "sha512-qjxPLHd3r5DnsdGacqOMU6pb/avJzdh9tFX2ymgoZE27BmjXrNy/y4LoaiTeAb+O3gL8AfpJGtqfX/ae2leYYQ=="
+      }
+    },
+    "npm:lodash.isarguments": {
+      "type": "npm",
+      "name": "npm:lodash.isarguments",
+      "data": {
+        "version": "3.1.0",
+        "packageName": "lodash.isarguments",
+        "hash": "sha512-chi4NHZlZqZD18a0imDHnZPrDeBbTtVN7GXMwuGdRH9qotxAjYs3aVLKc7zNOG9eddR5Ksd8rvFEBc9SsggPpg=="
+      }
+    },
     "npm:lodash.memoize": {
       "type": "npm",
       "name": "npm:lodash.memoize",
@@ -13261,6 +13360,78 @@
         "hash": "sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow=="
       }
     },
+    "npm:pg": {
+      "type": "npm",
+      "name": "npm:pg",
+      "data": {
+        "version": "8.14.1",
+        "packageName": "pg",
+        "hash": "sha512-0TdbqfjwIun9Fm/r89oB7RFQ0bLgduAhiIqIXOsyKoiC/L54DbuAAzIEN/9Op0f1Po9X7iCPXGoa/Ah+2aI8Xw=="
+      }
+    },
+    "npm:pg-cloudflare": {
+      "type": "npm",
+      "name": "npm:pg-cloudflare",
+      "data": {
+        "version": "1.1.1",
+        "packageName": "pg-cloudflare",
+        "hash": "sha512-xWPagP/4B6BgFO+EKz3JONXv3YDgvkbVrGw2mTo3D6tVDQRh1e7cqVGvyR3BE+eQgAvx1XhW/iEASj4/jCWl3Q=="
+      }
+    },
+    "npm:pg-connection-string": {
+      "type": "npm",
+      "name": "npm:pg-connection-string",
+      "data": {
+        "version": "2.7.0",
+        "packageName": "pg-connection-string",
+        "hash": "sha512-PI2W9mv53rXJQEOb8xNR8lH7Hr+EKa6oJa38zsK0S/ky2er16ios1wLKhZyxzD7jUReiWokc9WK5nxSnC7W1TA=="
+      }
+    },
+    "npm:pg-int8": {
+      "type": "npm",
+      "name": "npm:pg-int8",
+      "data": {
+        "version": "1.0.1",
+        "packageName": "pg-int8",
+        "hash": "sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw=="
+      }
+    },
+    "npm:pg-pool": {
+      "type": "npm",
+      "name": "npm:pg-pool",
+      "data": {
+        "version": "3.8.0",
+        "packageName": "pg-pool",
+        "hash": "sha512-VBw3jiVm6ZOdLBTIcXLNdSotb6Iy3uOCwDGFAksZCXmi10nyRvnP2v3jl4d+IsLYRyXf6o9hIm/ZtUzlByNUdw=="
+      }
+    },
+    "npm:pg-protocol": {
+      "type": "npm",
+      "name": "npm:pg-protocol",
+      "data": {
+        "version": "1.8.0",
+        "packageName": "pg-protocol",
+        "hash": "sha512-jvuYlEkL03NRvOoyoRktBK7+qU5kOvlAwvmrH8sr3wbLrOdVWsRxQfz8mMy9sZFsqJ1hEWNfdWKI4SAmoL+j7g=="
+      }
+    },
+    "npm:pg-types": {
+      "type": "npm",
+      "name": "npm:pg-types",
+      "data": {
+        "version": "2.2.0",
+        "packageName": "pg-types",
+        "hash": "sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA=="
+      }
+    },
+    "npm:pgpass": {
+      "type": "npm",
+      "name": "npm:pgpass",
+      "data": {
+        "version": "1.0.5",
+        "packageName": "pgpass",
+        "hash": "sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug=="
+      }
+    },
     "npm:picocolors": {
       "type": "npm",
       "name": "npm:picocolors",
@@ -13666,6 +13837,42 @@
         "hash": "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ=="
       }
     },
+    "npm:postgres-array": {
+      "type": "npm",
+      "name": "npm:postgres-array",
+      "data": {
+        "version": "2.0.0",
+        "packageName": "postgres-array",
+        "hash": "sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA=="
+      }
+    },
+    "npm:postgres-bytea": {
+      "type": "npm",
+      "name": "npm:postgres-bytea",
+      "data": {
+        "version": "1.0.0",
+        "packageName": "postgres-bytea",
+        "hash": "sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w=="
+      }
+    },
+    "npm:postgres-date": {
+      "type": "npm",
+      "name": "npm:postgres-date",
+      "data": {
+        "version": "1.0.7",
+        "packageName": "postgres-date",
+        "hash": "sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q=="
+      }
+    },
+    "npm:postgres-interval": {
+      "type": "npm",
+      "name": "npm:postgres-interval",
+      "data": {
+        "version": "1.2.0",
+        "packageName": "postgres-interval",
+        "hash": "sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ=="
+      }
+    },
     "npm:prelude-ls": {
       "type": "npm",
       "name": "npm:prelude-ls",
@@ -13934,6 +14141,24 @@
         "version": "0.8.0",
         "packageName": "rechoir",
         "hash": "sha512-/vxpCXddiX8NGfGO/mTafwjq4aFa/71pvamip0++IQk3zG8cbCj0fifNPrjjF1XMXUne91jL9OoxmdykoEtifQ=="
+      }
+    },
+    "npm:redis-errors": {
+      "type": "npm",
+      "name": "npm:redis-errors",
+      "data": {
+        "version": "1.2.0",
+        "packageName": "redis-errors",
+        "hash": "sha512-1qny3OExCf0UvUV/5wpYKf2YwPcOqXzkwKKSmKHiE6ZMQs5heeE/c8eXK+PNllPvmjgAbfnsbpkGZWy8cBpn9w=="
+      }
+    },
+    "npm:redis-parser": {
+      "type": "npm",
+      "name": "npm:redis-parser",
+      "data": {
+        "version": "3.0.0",
+        "packageName": "redis-parser",
+        "hash": "sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A=="
       }
     },
     "npm:reflect-metadata": {
@@ -14611,6 +14836,15 @@
         "hash": "sha512-RJRdvCo6IAnPdsvP/7m6bsQqNnn1FCBX5ZNtFL98MmFF/4xAIJTIg1YbHW5DC2W5SKZanrC6i4HsJqlajw/dZw=="
       }
     },
+    "npm:sha.js": {
+      "type": "npm",
+      "name": "npm:sha.js",
+      "data": {
+        "version": "2.4.11",
+        "packageName": "sha.js",
+        "hash": "sha512-QMEp5B7cftE7APOjk5Y6xgrbWu+WkLVQwk8JNjZ8nKRciZaByEW6MubieAiToS7+dwvrjGhH8jRXz3MVd0AYqQ=="
+      }
+    },
     "npm:shallow-clone": {
       "type": "npm",
       "name": "npm:shallow-clone",
@@ -14791,6 +15025,15 @@
         "hash": "sha512-hsLVFE5SjA6TCisWeJXFKniGGOpBgMLmerfO2aCyCU5s7nJ/rpAepqmFifv/GCbSbueEeAJJnmSQ2rKC/g8Fcw=="
       }
     },
+    "npm:split2": {
+      "type": "npm",
+      "name": "npm:split2",
+      "data": {
+        "version": "4.2.0",
+        "packageName": "split2",
+        "hash": "sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg=="
+      }
+    },
     "npm:sprintf-js": {
       "type": "npm",
       "name": "npm:sprintf-js",
@@ -14798,6 +15041,15 @@
         "version": "1.0.3",
         "packageName": "sprintf-js",
         "hash": "sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g=="
+      }
+    },
+    "npm:sql-highlight": {
+      "type": "npm",
+      "name": "npm:sql-highlight",
+      "data": {
+        "version": "6.0.0",
+        "packageName": "sql-highlight",
+        "hash": "sha512-+fLpbAbWkQ+d0JEchJT/NrRRXbYRNbG15gFpANx73EwxQB1PRjj+k/OI0GTU0J63g8ikGkJECQp9z8XEJZvPRw=="
       }
     },
     "npm:sshpk": {
@@ -14825,6 +15077,15 @@
         "version": "0.0.2",
         "packageName": "stackback",
         "hash": "sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw=="
+      }
+    },
+    "npm:standard-as-callback": {
+      "type": "npm",
+      "name": "npm:standard-as-callback",
+      "data": {
+        "version": "2.1.0",
+        "packageName": "standard-as-callback",
+        "hash": "sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A=="
       }
     },
     "npm:std-env": {
@@ -15457,6 +15718,33 @@
         "hash": "sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA=="
       }
     },
+    "npm:typeorm": {
+      "type": "npm",
+      "name": "npm:typeorm",
+      "data": {
+        "version": "0.3.22",
+        "packageName": "typeorm",
+        "hash": "sha512-P/Tsz3UpJ9+K0oryC0twK5PO27zejLYYwMsE8SISfZc1lVHX+ajigiOyWsKbuXpEFMjD9z7UjLzY3+ElVOMMDA=="
+      }
+    },
+    "npm:uuid@11.1.0": {
+      "type": "npm",
+      "name": "npm:uuid@11.1.0",
+      "data": {
+        "version": "11.1.0",
+        "packageName": "uuid",
+        "hash": "sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A=="
+      }
+    },
+    "npm:uuid": {
+      "type": "npm",
+      "name": "npm:uuid",
+      "data": {
+        "version": "8.3.2",
+        "packageName": "uuid",
+        "hash": "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg=="
+      }
+    },
     "npm:typescript": {
       "type": "npm",
       "name": "npm:typescript",
@@ -15644,15 +15932,6 @@
         "version": "1.0.1",
         "packageName": "utils-merge",
         "hash": "sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA=="
-      }
-    },
-    "npm:uuid": {
-      "type": "npm",
-      "name": "npm:uuid",
-      "data": {
-        "version": "8.3.2",
-        "packageName": "uuid",
-        "hash": "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg=="
       }
     },
     "npm:v8-compile-cache-lib": {
@@ -16125,6 +16404,16 @@
       },
       {
         "source": "auth-service",
+        "target": "npm:@nestjs/typeorm",
+        "type": "static"
+      },
+      {
+        "source": "auth-service",
+        "target": "npm:typeorm",
+        "type": "static"
+      },
+      {
+        "source": "auth-service",
         "target": "npm:@nestjs/core",
         "type": "static"
       },
@@ -16159,6 +16448,11 @@
     "user-service": [
       {
         "source": "user-service",
+        "target": "npm:typeorm",
+        "type": "static"
+      },
+      {
+        "source": "user-service",
         "target": "npm:@nestjs/testing",
         "type": "static"
       },
@@ -16170,6 +16464,11 @@
       {
         "source": "user-service",
         "target": "npm:@nestjs/microservices",
+        "type": "static"
+      },
+      {
+        "source": "user-service",
+        "target": "npm:@nestjs/typeorm",
         "type": "static"
       },
       {
@@ -16260,308 +16559,323 @@
       },
       {
         "source": "common",
+        "target": "npm:@nestjs/typeorm",
+        "type": "static"
+      },
+      {
+        "source": "common",
         "target": "npm:dotenv",
-        "type": "static"
-      },
-      {
-        "source": "common",
-        "target": "npm:@nestjs/testing",
-        "type": "static"
-      },
-      {
-        "source": "common",
-        "target": "npm:@nestjs/core",
         "type": "static"
       }
     ],
-    "01-user-management-app": [
+    "nx": [
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nx/eslint-plugin",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:jest",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nx/jest",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@eslint/js",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nestjs/schematics",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nestjs/testing",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nx/cypress",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nx/js",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nx/node",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nx/react",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nx/vite",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nx/web",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nx/webpack",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@swc-node/register",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@swc/cli",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@swc/core",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@swc/helpers",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@testing-library/dom",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@testing-library/react",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@types/jest",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@types/node",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@types/react",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@types/react-dom",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@vitejs/plugin-react",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@vitest/ui",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:babel-jest",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:cypress",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:eslint",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:eslint-plugin-cypress",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:eslint-plugin-import",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:eslint-plugin-jsx-a11y",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:eslint-plugin-react",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:eslint-plugin-react-hooks",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:jest-environment-jsdom",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:jest-environment-node",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:jiti",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:jsdom",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:jsonc-eslint-parser",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:prettier",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:ts-jest",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:ts-node",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:tslib",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:typescript",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:vite",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:vitest",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:webpack-cli",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nestjs/common",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nestjs/core",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nestjs/microservices",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:@nestjs/platform-express",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
+        "target": "npm:@nestjs/typeorm",
+        "type": "static"
+      },
+      {
+        "source": "nx",
         "target": "npm:@nx/nest",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:axios",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
+        "target": "npm:ioredis",
+        "type": "static"
+      },
+      {
+        "source": "nx",
+        "target": "npm:pg",
+        "type": "static"
+      },
+      {
+        "source": "nx",
         "target": "npm:react",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:react-dom",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:react-router-dom",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:reflect-metadata",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
         "target": "npm:rxjs",
         "type": "static"
       },
       {
-        "source": "01-user-management-app",
+        "source": "nx",
+        "target": "npm:typeorm",
+        "type": "static"
+      },
+      {
+        "source": "nx",
         "target": "npm:typescript-eslint",
         "type": "static"
       }
@@ -21031,6 +21345,11 @@
     "npm:@nestjs/microservices": [
       {
         "source": "npm:@nestjs/microservices",
+        "target": "npm:ioredis",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/microservices",
         "target": "npm:reflect-metadata",
         "type": "static"
       },
@@ -21138,6 +21457,33 @@
       {
         "source": "npm:@nestjs/testing",
         "target": "npm:tslib",
+        "type": "static"
+      }
+    ],
+    "npm:@nestjs/typeorm": [
+      {
+        "source": "npm:@nestjs/typeorm",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/typeorm",
+        "target": "npm:@nestjs/core",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/typeorm",
+        "target": "npm:reflect-metadata",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/typeorm",
+        "target": "npm:rxjs",
+        "type": "static"
+      },
+      {
+        "source": "npm:@nestjs/typeorm",
+        "target": "npm:typeorm",
         "type": "static"
       }
     ],
@@ -29453,6 +29799,53 @@
         "type": "static"
       }
     ],
+    "npm:ioredis": [
+      {
+        "source": "npm:ioredis",
+        "target": "npm:@ioredis/commands",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:cluster-key-slot",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:debug",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:denque",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:lodash.defaults",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:lodash.isarguments",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:redis-errors",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:redis-parser",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:standard-as-callback",
+        "type": "static"
+      }
+    ],
     "npm:is-array-buffer": [
       {
         "source": "npm:is-array-buffer",
@@ -32655,6 +33048,79 @@
         "type": "static"
       }
     ],
+    "npm:pg": [
+      {
+        "source": "npm:pg",
+        "target": "npm:pg-connection-string",
+        "type": "static"
+      },
+      {
+        "source": "npm:pg",
+        "target": "npm:pg-pool",
+        "type": "static"
+      },
+      {
+        "source": "npm:pg",
+        "target": "npm:pg-protocol",
+        "type": "static"
+      },
+      {
+        "source": "npm:pg",
+        "target": "npm:pg-types",
+        "type": "static"
+      },
+      {
+        "source": "npm:pg",
+        "target": "npm:pgpass",
+        "type": "static"
+      },
+      {
+        "source": "npm:pg",
+        "target": "npm:pg-cloudflare",
+        "type": "static"
+      }
+    ],
+    "npm:pg-pool": [
+      {
+        "source": "npm:pg-pool",
+        "target": "npm:pg",
+        "type": "static"
+      }
+    ],
+    "npm:pg-types": [
+      {
+        "source": "npm:pg-types",
+        "target": "npm:pg-int8",
+        "type": "static"
+      },
+      {
+        "source": "npm:pg-types",
+        "target": "npm:postgres-array",
+        "type": "static"
+      },
+      {
+        "source": "npm:pg-types",
+        "target": "npm:postgres-bytea",
+        "type": "static"
+      },
+      {
+        "source": "npm:pg-types",
+        "target": "npm:postgres-date",
+        "type": "static"
+      },
+      {
+        "source": "npm:pg-types",
+        "target": "npm:postgres-interval",
+        "type": "static"
+      }
+    ],
+    "npm:pgpass": [
+      {
+        "source": "npm:pgpass",
+        "target": "npm:split2",
+        "type": "static"
+      }
+    ],
     "npm:piscina": [
       {
         "source": "npm:piscina",
@@ -33241,6 +33707,13 @@
         "type": "static"
       }
     ],
+    "npm:postgres-interval": [
+      {
+        "source": "npm:postgres-interval",
+        "target": "npm:xtend",
+        "type": "static"
+      }
+    ],
     "npm:pretty-format": [
       {
         "source": "npm:pretty-format",
@@ -33447,6 +33920,13 @@
       {
         "source": "npm:rechoir",
         "target": "npm:resolve",
+        "type": "static"
+      }
+    ],
+    "npm:redis-parser": [
+      {
+        "source": "npm:redis-parser",
+        "target": "npm:redis-errors",
         "type": "static"
       }
     ],
@@ -34306,6 +34786,18 @@
       {
         "source": "npm:set-proto",
         "target": "npm:es-object-atoms",
+        "type": "static"
+      }
+    ],
+    "npm:sha.js": [
+      {
+        "source": "npm:sha.js",
+        "target": "npm:inherits",
+        "type": "static"
+      },
+      {
+        "source": "npm:sha.js",
+        "target": "npm:safe-buffer",
         "type": "static"
       }
     ],
@@ -35669,6 +36161,105 @@
         "type": "static"
       }
     ],
+    "npm:typeorm": [
+      {
+        "source": "npm:typeorm",
+        "target": "npm:ioredis",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:pg",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:reflect-metadata",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:ts-node",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:@sqltools/formatter",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:ansis",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:app-root-path",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:buffer@6.0.3",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:dayjs",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:debug",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:dotenv",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:glob@10.4.5",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:sha.js",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:sql-highlight",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:uuid@11.1.0",
+        "type": "static"
+      },
+      {
+        "source": "npm:typeorm",
+        "target": "npm:yargs",
+        "type": "static"
+      }
+    ],
+    "npm:buffer@6.0.3": [
+      {
+        "source": "npm:buffer@6.0.3",
+        "target": "npm:base64-js",
+        "type": "static"
+      },
+      {
+        "source": "npm:buffer@6.0.3",
+        "target": "npm:ieee754",
+        "type": "static"
+      }
+    ],
     "npm:typescript-eslint": [
       {
         "source": "npm:typescript-eslint",
@@ -37003,62 +37594,62 @@
   "version": "6.0",
   "errors": [
     {
-      "stack": " - apps/api-gateway/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/api-gateway-e2e/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/auth-service/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/auth-service-e2e/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/frontend/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/frontend-e2e/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/user-service-e2e/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/user-service/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
-      "message": "8 errors occurred while processing files for the @nx/eslint/plugin plugin (Defined at nx.json#plugins[1])\n.\n  - apps/api-gateway/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/api-gateway-e2e/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/auth-service/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/auth-service-e2e/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/frontend/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/frontend-e2e/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/user-service-e2e/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/user-service/eslint.config.mjs: Identifier 'baseConfig' has already been declared",
+      "stack": " - apps/api-gateway/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/api-gateway-e2e/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/auth-service/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/frontend/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/frontend-e2e/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/auth-service-e2e/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/user-service/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)\n - apps/user-service-e2e/eslint.config.mjs: SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
+      "message": "8 errors occurred while processing files for the @nx/eslint/plugin plugin (Defined at nx.json#plugins[1])\n.\n  - apps/api-gateway/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/api-gateway-e2e/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/auth-service/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/frontend/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/frontend-e2e/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/auth-service-e2e/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/user-service/eslint.config.mjs: Identifier 'baseConfig' has already been declared\n  - apps/user-service-e2e/eslint.config.mjs: Identifier 'baseConfig' has already been declared",
       "errors": [
         [
           "apps/api-gateway/eslint.config.mjs",
           {
-            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
+            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
             "message": "Identifier 'baseConfig' has already been declared"
           }
         ],
         [
           "apps/api-gateway-e2e/eslint.config.mjs",
           {
-            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
+            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
             "message": "Identifier 'baseConfig' has already been declared"
           }
         ],
         [
           "apps/auth-service/eslint.config.mjs",
           {
-            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
-            "message": "Identifier 'baseConfig' has already been declared"
-          }
-        ],
-        [
-          "apps/auth-service-e2e/eslint.config.mjs",
-          {
-            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
+            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
             "message": "Identifier 'baseConfig' has already been declared"
           }
         ],
         [
           "apps/frontend/eslint.config.mjs",
           {
-            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
+            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
             "message": "Identifier 'baseConfig' has already been declared"
           }
         ],
         [
           "apps/frontend-e2e/eslint.config.mjs",
           {
-            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
+            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
             "message": "Identifier 'baseConfig' has already been declared"
           }
         ],
         [
-          "apps/user-service-e2e/eslint.config.mjs",
+          "apps/auth-service-e2e/eslint.config.mjs",
           {
-            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
+            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
             "message": "Identifier 'baseConfig' has already been declared"
           }
         ],
         [
           "apps/user-service/eslint.config.mjs",
           {
-            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:437:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:484:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
+            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
+            "message": "Identifier 'baseConfig' has already been declared"
+          }
+        ],
+        [
+          "apps/user-service-e2e/eslint.config.mjs",
+          {
+            "stack": "SyntaxError: Identifier 'baseConfig' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:338:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)\n    at #translate (node:internal/modules/esm/loader:468:12)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)\n    at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)",
             "message": "Identifier 'baseConfig' has already been declared"
           }
         ]
@@ -37068,46 +37659,6 @@
           "eslint.config.mjs",
           {
             "projects": {
-              "lib/common": {
-                "targets": {
-                  "lint": {
-                    "command": "eslint .",
-                    "cache": true,
-                    "options": {
-                      "cwd": "lib/common"
-                    },
-                    "inputs": [
-                      "default",
-                      "^default",
-                      "{workspaceRoot}/eslint.base.config.mjs",
-                      "{workspaceRoot}/eslint.config.mjs",
-                      "{workspaceRoot}/tools/eslint-rules/**/*",
-                      {
-                        "externalDependencies": [
-                          "eslint"
-                        ]
-                      }
-                    ],
-                    "outputs": [
-                      "{options.outputFile}"
-                    ],
-                    "metadata": {
-                      "technologies": [
-                        "eslint"
-                      ],
-                      "description": "Runs ESLint on project",
-                      "help": {
-                        "command": "npx eslint --help",
-                        "example": {
-                          "options": {
-                            "max-warnings": 0
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
               ".": {
                 "targets": {
                   "lint": {
@@ -37150,11 +37701,58 @@
               }
             }
           }
+        ],
+        [
+          "lib/common/eslint.config.mjs",
+          {
+            "projects": {
+              "lib/common": {
+                "targets": {
+                  "lint": {
+                    "command": "eslint .",
+                    "cache": true,
+                    "options": {
+                      "cwd": "lib/common"
+                    },
+                    "inputs": [
+                      "default",
+                      "^default",
+                      "{workspaceRoot}/eslint.base.config.mjs",
+                      "{projectRoot}/eslint.config.mjs",
+                      "{workspaceRoot}/tools/eslint-rules/**/*",
+                      {
+                        "externalDependencies": [
+                          "eslint"
+                        ]
+                      }
+                    ],
+                    "outputs": [
+                      "{options.outputFile}"
+                    ],
+                    "metadata": {
+                      "technologies": [
+                        "eslint"
+                      ],
+                      "description": "Runs ESLint on project",
+                      "help": {
+                        "command": "npx eslint --help",
+                        "example": {
+                          "options": {
+                            "max-warnings": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         ]
       ],
       "name": "AggregateCreateNodesError",
       "pluginIndex": 1
     }
   ],
-  "computedAt": 1744161827788
+  "computedAt": 1744168608809
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './entities/user.entity';
 import { createHash } from 'crypto';
 import { EventEmitter2 } from '@nestjs/event-emitter';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class AuthService {
