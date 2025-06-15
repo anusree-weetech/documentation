@@ -103,12 +103,8 @@ npm install -g conventional-changelog-cli
 ```bash
 conventional-changelog -p angular -i CHANGELOG.md -s
 ```
-or
 
-```bash
-npm install --save-dev conventional-changelog-angular
-npx conventional-changelog -p angular -i CHANGELOG.md -s
-```
+> note: `npx conventional-changelog -p angular -i CHANGELOG.md -s` doesnt run cause of higher node version. might need to downgrade or else throws error.
 
 > `-p angular` means it uses the [Angular commit convention](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit), which is the most common.
 
