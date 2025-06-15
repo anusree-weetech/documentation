@@ -168,6 +168,7 @@ Automatically creates **draft GitHub releases** based on merged PR titles and la
 3. **Label your pull requests** properly (`feature`, `bug`, etc.)
 
 > 🎉 GitHub will auto-generate a release draft with grouped PRs, and you can publish it manually.(not during commits to the main branch)
+- result release will be found among the other releases: ![alt text](image.png)
 
 
 
