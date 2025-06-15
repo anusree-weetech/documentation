@@ -5,7 +5,7 @@
 - [x] nodejs
 - [ ] sequelize 
 - [ ] docker and kubernetes
-- [ ] microservice
+- [ ] microservice --> do uptil here at office
 - [ ] er diagram
 - [ ] self hosted runner github
 - [ ] husky, pritter, eslint , jest

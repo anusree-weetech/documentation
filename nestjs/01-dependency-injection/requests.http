@@ -1,0 +1,5 @@
+### Log Dependency Injection
+GET http://localhost:3000/di
+
+### Log Manual
+GET http://localhost:3000/manual

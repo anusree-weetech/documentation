@@ -1,0 +1,22 @@
+### Transfer Funds
+POST http://localhost:3000/banking/transfer
+Content-Type: application/json
+
+{
+  "fromAccountId": "396e4466-5b2a-44fb-ac21-4dd9bdfe2fd0",
+  "toAccountId": "7eab61ad-97a7-4546-b0ba-e69b537801cc",
+  "amount": 100
+}
+### Get Account Balance
+GET http://localhost:3000/banking/account/1
+### Get All Accounts
+GET http://localhost:3000/banking/accounts
+
+### Create Account  
+POST http://localhost:3000/banking/create-account
+Content-Type: application/json
+
+{
+  "name": "John May",
+  "initialBalance": 1000
+}       

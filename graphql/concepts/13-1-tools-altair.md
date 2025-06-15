@@ -1,0 +1,2 @@
+- run any graphql app
+- visit https://web.altairgraphql.dev/?plan_select=basic
