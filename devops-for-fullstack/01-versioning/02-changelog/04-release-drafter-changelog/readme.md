@@ -1,0 +1,2 @@
+- code must be placed at the root of the project to run
+- our code for automation of release draft is placed in [here](../../../../.github)

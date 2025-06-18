@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",             // compile target
+    "module": "ESNext",             // module format
+    "rootDir": "src",               // input folder
+    "outDir": "dist",               // output folder
+    "strict": true,                 // enable all strict checks
+    "esModuleInterop": true         // allow CommonJS imports
+  },
+  "include": ["src"]
+}
