@@ -1,0 +1,28 @@
+### User registration
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "testemail10@example.com",
+  "password": "testpassword"
+}
+
+### User login
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+   "email": "testemail10@example.com",
+  "password": "testpassword"
+}
+
+### User Update
+PUT http://localhost:3000/api/user/update
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYjNiMzJjOC1lNzI2LTQ4ZjgtYmUyOS1lYTNhNWFjYWIzZTMiLCJlbWFpbCI6InRlc3RlbWFpbDEwQGV4YW1wbGUuY29tIiwiaWF0IjoxNzQ0MTk5MzQzLCJleHAiOjE3NDQyMDI5NDN9.IHeqf3bBgwGoy0Ji0UazEn6G_LUYYgUcyXc0ABy3smk; Path=/; HttpOnly; Secure; SameSite=Strict
+
+{
+    "name": "New Name",
+    "phone": "+911234567890",
+    "address": "New Address, City, Country"
+}
