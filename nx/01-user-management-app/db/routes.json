@@ -1,0 +1,4 @@
+{
+  "/api/users/all": "/users",
+  "/api/auth/register": "/register"
+}
