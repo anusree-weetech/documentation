@@ -6,6 +6,7 @@
 
 - installing nginx `apt install nginx`
 - staring nginx `systemctl start nginx `
+- testing if nginx is working fine `nginx -t`
 - process of adding files to nginx
 
   - add the code in a new file in sites-available (example: my-site)
