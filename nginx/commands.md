@@ -1,5 +1,7 @@
 ### Some common nginx related commands
 
+- when trying to code or add nginx files in `etc/nginx/` folder, then first open vscode and run `sudo code --no-sandbox --user-data-dir=/tmp/vscode-root .` in terminal. Then start coding. 
+
 - for every command if not runing the terminal as the owner, prefix `sudo` to everything
 
 - installing nginx `apt install nginx`
